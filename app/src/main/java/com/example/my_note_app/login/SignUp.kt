@@ -1,5 +1,6 @@
 package com.example.my_note_app.login
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,12 +24,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.appbroken_rice.ui.theme.MyNotesApp
+import com.example.my_note_app.R
 
 @Composable
 fun SignUpScreen(
@@ -41,6 +45,16 @@ fun SignUpScreen(
     val context = LocalContext.current
 
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally){
+        val painter: Painter = painterResource(id = R.drawable.welcome)
+
+        Image(
+            painter = painter,
+            contentDescription = "GIF from drawable",
+            modifier = Modifier
+                .size(200.dp)
+                .padding(vertical = 16.dp)
+        )
+
         Text(
             text = "Sign Up",
             style = MaterialTheme.typography.h3,

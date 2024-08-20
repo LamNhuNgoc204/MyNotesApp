@@ -1,6 +1,8 @@
 package com.example.my_note_app.login
 
 import android.util.Log
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,13 +26,21 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.transform.CircleCropTransformation
 import com.example.appbroken_rice.ui.theme.MyNotesApp
+import com.example.my_note_app.R
 
 @Composable
 fun LoginScreen(
@@ -38,11 +48,27 @@ fun LoginScreen(
     onNavToHomePage:() -> Unit,
     onNavToSignupPage:() -> Unit,
 ) {
+    val color = Color(0xFFFEFEFE)
+
     val loginState = loginModel?.LoginState
     val isErr = loginState?.loginError != null
     val context = LocalContext.current
 
-    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally){
+    Column(modifier = Modifier.fillMaxSize()
+        .background(color),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+
+        val painter: Painter = painterResource(id = R.drawable.giphy)
+
+        Image(
+            painter = painter,
+            contentDescription = "GIF from drawable",
+            modifier = Modifier
+                .size(250.dp)
+                .padding(vertical = 16.dp)
+        )
+
         Text(
             text = "Login",
             style = MaterialTheme.typography.h3,

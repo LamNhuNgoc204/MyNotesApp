@@ -95,4 +95,7 @@ dependencies {
 
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+    //coil
+    implementation("io.coil-kt:coil-compose:2.7.0")
 }
